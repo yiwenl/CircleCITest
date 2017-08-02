@@ -1,6 +1,12 @@
+machine:
+  node:
+    version: 7.4.0
 dependencies:
-    override:
-        - sudo pip install awscli
+  pre:
+      - rm -rf ./node_modules
+  override:
+      - nvm install 7 && npm install
+      - sudo pip install awscli
 deployment:
   prod:
     branch: develop
@@ -8,4 +14,4 @@ deployment:
       - aws s3 sync /home/ubuntu/CircleCITest s3://circlecitest --delete
 test:
   override:
-    - echo "test"
+    - nvm use 7 && npm run test:ci
