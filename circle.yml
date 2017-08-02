@@ -3,7 +3,7 @@ dependencies:
         - sudo pip install awscli
 deployment:
   prod:
-    branch: master
+    branch: develop
     commands:
       - aws s3 sync /home/ubuntu/CircleCITest s3://circlecitest --delete
 test:
